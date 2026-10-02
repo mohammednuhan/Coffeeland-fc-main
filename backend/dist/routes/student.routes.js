@@ -1,6 +1,6 @@
-import { deleteStudent, getStudent, getStudents, registerStudent, updateStudent, } from "../controllers/student.controller";
-import { rateLimit } from "../middleware/cors.middleware";
-import { requireAuth, requireRoles } from "../middleware/auth.middleware";
+import { deleteStudent, getStudent, getStudents, registerStudent, updateStudent, } from "../controllers/student.controller.js";
+import { rateLimit } from "../middleware/cors.middleware.js";
+import { requireAuth, requireRoles } from "../middleware/auth.middleware.js";
 export const studentRoutes = [
     {
         method: "POST",

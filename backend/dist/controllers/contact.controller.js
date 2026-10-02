@@ -1,8 +1,8 @@
-import { prisma } from "../config/prisma";
-import { AppError } from "../utils/errors";
-import { created, noContent, ok } from "../utils/response";
-import { sendTelegramRegistration } from "../utils/telegram";
-import { asInt, asString, isEmail, parseBody } from "../utils/validate";
+import { prisma } from "../config/prisma.js";
+import { AppError } from "../utils/errors.js";
+import { created, noContent, ok } from "../utils/response.js";
+import { sendTelegramRegistration } from "../utils/telegram.js";
+import { asInt, asString, isEmail, parseBody } from "../utils/validate.js";
 export const createContact = async (ctx) => {
     const body = await parseBody(ctx.req);
     const name = asString(body.name);

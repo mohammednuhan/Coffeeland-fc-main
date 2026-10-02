@@ -1,6 +1,6 @@
 import { prisma } from "../config/prisma.js";
 import type { Prisma } from "@prisma/client";
-import type { RouteContext, Middleware } from "../types.js";
+import type { RouteContext, Middleware } from "../types/index.js";
 import { AppError } from "../utils/errors.js";
 import { hashPassword } from "../utils/password.js";
 import { created, noContent, notFound, ok } from "../utils/response.js";

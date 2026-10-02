@@ -1,10 +1,10 @@
-import { env } from "../config/env";
-import { prisma } from "../config/prisma";
-import { AppError } from "../utils/errors";
-import { signToken } from "../utils/jwt";
-import { hashPassword, verifyPassword } from "../utils/password";
-import { created, ok } from "../utils/response";
-import { asString, isEmail, parseBody } from "../utils/validate";
+import { env } from "../config/env.js";
+import { prisma } from "../config/prisma.js";
+import { AppError } from "../utils/errors.js";
+import { signToken } from "../utils/jwt.js";
+import { hashPassword, verifyPassword } from "../utils/password.js";
+import { created, ok } from "../utils/response.js";
+import { asString, isEmail, parseBody } from "../utils/validate.js";
 function keysMatch(provided, expected) {
     if (provided.length !== expected.length)
         return false;

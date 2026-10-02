@@ -1,4 +1,4 @@
-import { env } from "../config/env";
+import { env } from "../config/env.js";
 const TELEGRAM_TIMEOUT_MS = 8000;
 function escapeHtml(value) {
     return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

@@ -1,6 +1,6 @@
 import { verifyToken } from "../utils/jwt.js";
 import { forbidden, unauthorized } from "../utils/response.js";
-import type { Middleware } from "../types.js";
+import type { Middleware } from "../types/index.js";
 
 /**
  * Authentication middleware — prevents access to protected routes unless a valid

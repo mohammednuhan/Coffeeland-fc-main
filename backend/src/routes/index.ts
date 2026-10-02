@@ -1,7 +1,7 @@
 import { authRoutes } from "./auth.routes.js";
 import { contactRoutes } from "./contact.routes.js";
 import { studentRoutes } from "./student.routes.js";
-import type { Route } from "../types.js";
+import type { Route } from "../types/index.js";
 import { ok } from "../utils/response.js";
 
 export const routes: Route[] = [

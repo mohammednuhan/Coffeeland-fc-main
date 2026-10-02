@@ -4,7 +4,7 @@ import { createServer as createHttpServer } from "node:http";
 import { env } from "./config/env.js";
 import { handleCors, handleError, logger } from "./middleware/cors.middleware.js";
 import { routes } from "./routes.js";
-import type { HttpMethod, Middleware, Next, Route, RouteContext } from "./types.js";
+import type { HttpMethod, Middleware, Next, Route, RouteContext } from "./types/index.js";
 import { notFound, tooManyRequests } from "./utils/response.js";
 
 const terminalNext: Next = async () =>

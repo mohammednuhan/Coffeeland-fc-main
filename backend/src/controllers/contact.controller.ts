@@ -1,5 +1,5 @@
 import { prisma } from "../config/prisma.js";
-import type { Middleware } from "../types.js";
+import type { Middleware } from "../types/index.js";
 import { AppError } from "../utils/errors.js";
 import { created, noContent, ok } from "../utils/response.js";
 import { sendTelegramRegistration } from "../utils/telegram.js";

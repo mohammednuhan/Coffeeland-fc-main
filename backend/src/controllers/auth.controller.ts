@@ -1,6 +1,6 @@
 import { env } from "../config/env.js";
 import { prisma } from "../config/prisma.js";
-import type { RouteContext } from "../types.js";
+import type { RouteContext } from "../types/index.js";
 import { AppError } from "../utils/errors.js";
 import { signToken } from "../utils/jwt.js";
 import { hashPassword, verifyPassword } from "../utils/password.js";

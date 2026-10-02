@@ -1,5 +1,5 @@
-import { verifyToken } from "../utils/jwt";
-import { forbidden, unauthorized } from "../utils/response";
+import { verifyToken } from "../utils/jwt.js";
+import { forbidden, unauthorized } from "../utils/response.js";
 /**
  * Authentication middleware — prevents access to protected routes unless a valid
  * `Authorization: Bearer <token>` header is present.

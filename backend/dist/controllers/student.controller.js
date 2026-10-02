@@ -1,8 +1,8 @@
-import { prisma } from "../config/prisma";
-import { AppError } from "../utils/errors";
-import { hashPassword } from "../utils/password";
-import { created, noContent, notFound, ok } from "../utils/response";
-import { asBool, asInt, asString, isEmail, parseBody } from "../utils/validate";
+import { prisma } from "../config/prisma.js";
+import { AppError } from "../utils/errors.js";
+import { hashPassword } from "../utils/password.js";
+import { created, noContent, notFound, ok } from "../utils/response.js";
+import { asBool, asInt, asString, isEmail, parseBody } from "../utils/validate.js";
 export const registerStudent = async (ctx) => {
     const body = await parseBody(ctx.req);
     const name = asString(body.name);

@@ -1,5 +1,5 @@
 import { env } from "../config/env.js";
-import type { Middleware } from "../types.js";
+import type { Middleware } from "../types/index.js";
 import { CORS_HEADERS, SECURITY_HEADERS, json, tooManyRequests } from "../utils/response.js";
 import { AppError } from "../utils/errors.js";
 

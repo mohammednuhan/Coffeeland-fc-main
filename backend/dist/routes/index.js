@@ -1,7 +1,7 @@
-import { authRoutes } from "./auth.routes";
-import { contactRoutes } from "./contact.routes";
-import { studentRoutes } from "./student.routes";
-import { ok } from "../utils/response";
+import { authRoutes } from "./auth.routes.js";
+import { contactRoutes } from "./contact.routes.js";
+import { studentRoutes } from "./student.routes.js";
+import { ok } from "../utils/response.js";
 export const routes = [
     ...authRoutes,
     ...studentRoutes,
