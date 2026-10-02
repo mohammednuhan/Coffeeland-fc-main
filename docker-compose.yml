@@ -10,13 +10,28 @@ services:
       NODE_ENV: production
       PORT: "4000"
       DATABASE_URL: file:../data/database.sqlite
-      JWT_SECRET: ${JWT_SECRET:-change-this-in-production-to-a-long-random-string}
+      # No default on purpose — the backend exits if these are missing.
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required. Copy .env.example to .env and set it.}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
-      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+      ADMIN_REGISTER_KEY: ${ADMIN_REGISTER_KEY:-}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-7019536523}
+      RATE_LIMIT_MAX_REQUESTS: ${RATE_LIMIT_MAX_REQUESTS:-20}
+      AUTH_RATE_LIMIT_MAX_REQUESTS: ${AUTH_RATE_LIMIT_MAX_REQUESTS:-5}
     volumes:
       - backend-data:/app/data
     expose:
       - "4000"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   frontend:
     build:
@@ -28,6 +43,15 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
 
 volumes:
   backend-data:
