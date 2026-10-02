@@ -1,7 +1,7 @@
-import { env } from "../config/env";
-import type { Middleware } from "../types";
-import { CORS_HEADERS, SECURITY_HEADERS, json, tooManyRequests } from "../utils/response";
-import { AppError } from "../utils/errors";
+import { env } from "../config/env.js";
+import type { Middleware } from "../types.js";
+import { CORS_HEADERS, SECURITY_HEADERS, json, tooManyRequests } from "../utils/response.js";
+import { AppError } from "../utils/errors.js";
 
 const DEFAULT_SECURITY_HEADERS: Record<string, string> = SECURITY_HEADERS;
 

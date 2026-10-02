@@ -1,11 +1,11 @@
-import { env } from "../config/env";
-import { prisma } from "../config/prisma";
-import type { RouteContext } from "../types";
-import { AppError } from "../utils/errors";
-import { signToken } from "../utils/jwt";
-import { hashPassword, verifyPassword } from "../utils/password";
-import { created, ok } from "../utils/response";
-import { asString, isEmail, parseBody } from "../utils/validate";
+import { env } from "../config/env.js";
+import { prisma } from "../config/prisma.js";
+import type { RouteContext } from "../types.js";
+import { AppError } from "../utils/errors.js";
+import { signToken } from "../utils/jwt.js";
+import { hashPassword, verifyPassword } from "../utils/password.js";
+import { created, ok } from "../utils/response.js";
+import { asString, isEmail, parseBody } from "../utils/validate.js";
 
 type RegisterBody = { username?: string; email?: string; password?: string; key?: string };
 type LoginBody = { email?: string; password?: string };

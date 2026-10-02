@@ -1,8 +1,8 @@
-import { authRoutes } from "./auth.routes";
-import { contactRoutes } from "./contact.routes";
-import { studentRoutes } from "./student.routes";
-import type { Route } from "../types";
-import { ok } from "../utils/response";
+import { authRoutes } from "./auth.routes.js";
+import { contactRoutes } from "./contact.routes.js";
+import { studentRoutes } from "./student.routes.js";
+import type { Route } from "../types.js";
+import { ok } from "../utils/response.js";
 
 export const routes: Route[] = [
   ...authRoutes,

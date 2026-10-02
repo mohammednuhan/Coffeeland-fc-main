@@ -1,7 +1,7 @@
-import { createContact, deleteContact, getContacts } from "../controllers/contact.controller";
-import { rateLimit } from "../middleware/cors.middleware";
-import { requireAuth, requireRoles } from "../middleware/auth.middleware";
-import type { Route } from "../types";
+import { createContact, deleteContact, getContacts } from "../controllers/contact.controller.js";
+import { rateLimit } from "../middleware/cors.middleware.js";
+import { requireAuth, requireRoles } from "../middleware/auth.middleware.js";
+import type { Route } from "../types.js";
 
 export const contactRoutes: Route[] = [
   {

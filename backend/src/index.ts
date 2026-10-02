@@ -1,6 +1,6 @@
-import { env } from "./config/env";
-import { prisma } from "./config/prisma";
-import { createServer } from "./server";
+import { env } from "./config/env.js";
+import { prisma } from "./config/prisma.js";
+import { createServer } from "./server.js";
 
 const SHUTDOWN_TIMEOUT_MS = 10_000;
 

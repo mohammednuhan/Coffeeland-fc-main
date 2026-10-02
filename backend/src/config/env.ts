@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { AppError } from "../utils/errors";
+import { AppError } from "../utils/errors.js";
 
 function readEnv(name: string, fallback?: string): string {
   const value = process.env[name];

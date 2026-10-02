@@ -1,11 +1,11 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { Readable } from "node:stream";
 import { createServer as createHttpServer } from "node:http";
-import { env } from "./config/env";
-import { handleCors, handleError, logger } from "./middleware/cors.middleware";
-import { routes } from "./routes";
-import type { HttpMethod, Middleware, Next, Route, RouteContext } from "./types";
-import { notFound, tooManyRequests } from "./utils/response";
+import { env } from "./config/env.js";
+import { handleCors, handleError, logger } from "./middleware/cors.middleware.js";
+import { routes } from "./routes.js";
+import type { HttpMethod, Middleware, Next, Route, RouteContext } from "./types.js";
+import { notFound, tooManyRequests } from "./utils/response.js";
 
 const terminalNext: Next = async () =>
   new Response(JSON.stringify({ error: "Unhandled request" }), {

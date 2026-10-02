@@ -1,8 +1,8 @@
-import { getMe, login, registerAdmin } from "../controllers/auth.controller";
-import { env } from "../config/env";
-import { rateLimit } from "../middleware/cors.middleware";
-import { requireAuth } from "../middleware/auth.middleware";
-import type { Route } from "../types";
+import { getMe, login, registerAdmin } from "../controllers/auth.controller.js";
+import { env } from "../config/env.js";
+import { rateLimit } from "../middleware/cors.middleware.js";
+import { requireAuth } from "../middleware/auth.middleware.js";
+import type { Route } from "../types.js";
 
 export const authRoutes: Route[] = [
   {

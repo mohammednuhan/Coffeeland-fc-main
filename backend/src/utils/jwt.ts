@@ -1,6 +1,6 @@
 import { SignJWT, jwtVerify } from "jose";
-import { env } from "../config/env";
-import type { JwtPayload } from "../types";
+import { env } from "../config/env.js";
+import type { JwtPayload } from "../types.js";
 
 const encoder = new TextEncoder();
 const ISSUER = "coffeelandfc";
