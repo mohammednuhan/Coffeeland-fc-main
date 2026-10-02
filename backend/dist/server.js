@@ -2,7 +2,7 @@ import { Readable } from "node:stream";
 import { createServer as createHttpServer } from "node:http";
 import { env } from "./config/env.js";
 import { handleCors, handleError, logger } from "./middleware/cors.middleware.js";
-import { routes } from "./routes.js";
+import { routes } from "./routes/index.js";
 import { notFound, tooManyRequests } from "./utils/response.js";
 const terminalNext = async () => new Response(JSON.stringify({ error: "Unhandled request" }), {
     status: 500,

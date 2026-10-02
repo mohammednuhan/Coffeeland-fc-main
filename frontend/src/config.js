@@ -5,7 +5,7 @@
 const rawPhone = import.meta.env.VITE_CONTACT_PHONE ?? "8876642269";
 const rawTelegram = import.meta.env.VITE_TELEGRAM_PHONE ?? "7019536523";
 
-function normalise(number: string): string {
+function normalise(number) {
   return number.replace(/\D/g, "");
 }
 
