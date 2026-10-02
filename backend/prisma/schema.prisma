@@ -1,0 +1,54 @@
+// Coffeeland FC — Prisma schema (SQLite)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model Student {
+  id        Int      @id @default(autoincrement())
+  name      String
+  age       Int
+  email     String   @unique
+  password  String   @default("")
+  message   String   @default("")
+  location  String   @default("Chikmagalur")
+  paid      Boolean  @default(false)
+  date      String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("students")
+}
+
+model Contact {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String   @default("")
+  inquiry   String   @default("")
+  message   String
+  ageGroup  String   @default("")
+  location  String   @default("")
+  batch     String   @default("")
+  date      String   @default("")
+  createdAt DateTime @default(now())
+
+  @@map("contacts")
+}
