@@ -45,7 +45,7 @@ export default function Events() {
                         <span className="badge badge-inline" style={{ background: "var(--accent)", marginBottom: "1rem" }}>
                             REGISTRATION OPEN
                         </span>
-                        <h3 style={{ fontSize: "2rem", marginBottom: "1rem" }}>CFC Summer Cup 2026</h3>
+                        <h3 style={{ marginBottom: "1rem" }}>CFC Summer Cup 2026</h3>
                         <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem" }}>
                             A high-intensity 5-a-side tournament for U15 and Open age categories. Cash prizes, trophies, and individual awards.
                         </p>

@@ -4,12 +4,35 @@ import { Link, useLocation } from "react-router-dom";
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const dropdownRef = useRef(null);
+  const searchRef = useRef(null);
+
+  const navLinks = [
+    { href: "/", label: "Home", icon: "🏠", desc: "Back to the homepage" },
+    { href: "/about", label: "About", icon: "🏛️", desc: "Our story & mission" },
+    { href: "/academy", label: "Academy", icon: "⚽", desc: "Training programs & camps" },
+    { href: "/events", label: "Events", icon: "📅", desc: "Fixtures & summer camps" },
+    { href: "/news", label: "News", icon: "📰", desc: "Latest club updates" },
+    { href: "/sponsors", label: "Sponsors", icon: "🤝", desc: "Our partners" },
+    { href: "/contact", label: "Contact", icon: "✉️", desc: "Get in touch with us" },
+  ];
+
+  const dropdownLinks = navLinks;
+  const searchResults =
+    query.trim() === ""
+      ? []
+      : navLinks.filter((item) => item.label.toLowerCase().includes(query.trim().toLowerCase()));
 
   const closeMenu = () => setIsMobileMenuOpen(false);
   const closeDropdown = () => setIsMenuOpen(false);
+  const closeSearch = () => {
+    setSearchOpen(false);
+    setQuery("");
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -31,6 +54,7 @@ export default function Navbar() {
       if (e.key === "Escape") {
         setIsMobileMenuOpen(false);
         setIsMenuOpen(false);
+        setSearchOpen(false);
       }
     };
     document.addEventListener("keydown", handleKey);
@@ -42,20 +66,13 @@ export default function Navbar() {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsMenuOpen(false);
       }
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setSearchOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const navLinks = [
-    { href: "/", label: "Home", icon: "🏠", desc: "Back to the homepage" },
-    { href: "/about", label: "About", icon: "🏛️", desc: "Our story & mission" },
-    { href: "/academy", label: "Academy", icon: "⚽", desc: "Training programs & camps" },
-    { href: "/events", label: "Events", icon: "📅", desc: "Fixtures & summer camps" },
-    { href: "/news", label: "News", icon: "📰", desc: "Latest club updates" },
-    { href: "/sponsors", label: "Sponsors", icon: "🤝", desc: "Our partners" },
-    { href: "/contact", label: "Contact", icon: "✉️", desc: "Get in touch with us" },
-  ];
 
   return (
     <header style={scrolled ? { background: "rgba(10, 18, 12, 0.97)", borderBottom: "1px solid rgba(212, 175, 55, 0.2)" } : {}}>
@@ -68,12 +85,62 @@ export default function Navbar() {
         </Link>
 
         <div className="nav-actions">
+          <div className="nav-search-wrapper" ref={searchRef}>
+            <button
+              type="button"
+              className={`nav-search-btn ${searchOpen ? "open" : ""}`}
+              aria-label="Search Pages"
+              aria-expanded={searchOpen}
+              onClick={() => {
+                setSearchOpen(!searchOpen);
+                setIsMenuOpen(false);
+              }}
+            >
+              <span className="nav-search-icon">🔍</span>
+            </button>
+
+            {searchOpen && (
+              <div className="search-panel">
+                <input
+                  type="search"
+                  className="search-input"
+                  placeholder="Search pages..."
+                  value={query}
+                  autoFocus
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                <div className="search-results">
+                  {searchResults.length > 0 ? (
+                    searchResults.map((item) => (
+                      <Link
+                        key={item.href}
+                        to={item.href}
+                        className="search-result-item"
+                        onClick={closeSearch}
+                      >
+                        <span className="search-result-icon">{item.icon}</span>
+                        {item.label}
+                      </Link>
+                    ))
+                  ) : (
+                    <div className="search-empty">
+                      {query.trim() === "" ? "Type to search pages" : "No pages found"}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
           <div className="nav-dropdown-wrapper" ref={dropdownRef}>
             <button
               className={`nav-menu-trigger ${isMenuOpen ? "open" : ""}`}
               aria-label="Open Menu"
               aria-expanded={isMenuOpen}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => {
+                setIsMenuOpen(!isMenuOpen);
+                setSearchOpen(false);
+              }}
             >
               <span></span>
               <span></span>
@@ -83,7 +150,7 @@ export default function Navbar() {
             <div className={`nav-dropdown ${isMenuOpen ? "show" : ""}`}>
               <div className="nav-dropdown-inner">
                 <div className="nav-dropdown-header">Navigate</div>
-                {navLinks.map((item) => (
+                {dropdownLinks.map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}

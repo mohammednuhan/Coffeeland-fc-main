@@ -60,6 +60,9 @@ html, body {
   line-height: 1.7;
   overflow-x: hidden;
   min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -698,6 +701,7 @@ nav {
 /* ========== HERO SECTION ========== */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   max-width: 1200px;
@@ -3038,9 +3042,9 @@ label {
 
 /* ========== ENLARGED JOIN BUTTONS ========== */
 .nav-join-btn {
-  padding: 0.75rem 2rem;
-  font-size: 0.95rem;
-  letter-spacing: 0.8px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.6px;
 }
 
 .hero-cta {
@@ -3820,4 +3824,231 @@ body::after {
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
   .lightbox-close { top: 12px; right: 12px; width: 40px; height: 40px; }
+}
+
+/* ========== MOBILE RESPONSIVE STRUCTURE ========== */
+
+/* Fluid headings/cards - desktop sizes preserved, shrink on phones */
+.content-grid h2 { font-size: clamp(1.9rem, 4.4vw, 2.5rem); }
+.event-register-card h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
+
+@media (max-width: 968px) {
+  /* Drawer follows the dynamic viewport (mobile browser chrome) */
+  .nav-links {
+    height: 100dvh;
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
+
+  /* Two-column content layouts become a single readable column */
+  .content-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+  .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+  /* Sections hard-coding 100px desktop padding */
+  .home-about,
+  .home-programs,
+  .home-coaches,
+  .home-gallery,
+  .achievements,
+  .cta-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .testimonial-slider { padding: 2.25rem 1.75rem 1.75rem; }
+
+  /* iOS auto-zooms the page when focused fields are under 16px */
+  input,
+  select,
+  textarea { font-size: 16px; }
+}
+
+@media (max-width: 768px) {
+  .content-grid { gap: 2rem; }
+
+  .home-about,
+  .home-programs,
+  .home-coaches,
+  .home-gallery,
+  .achievements,
+  .cta-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .logo-bg-center { width: 260px; height: 260px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding-left: 1rem; padding-right: 1rem; }
+
+  /* Buttons carrying oversized inline padding/font overflow small screens */
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-green {
+    padding: 0.9rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+
+  .cta-btns { flex-direction: column; align-items: stretch; }
+  .cta-btns a { width: 100%; }
+
+  .content-grid h2 { font-size: clamp(1.55rem, 7vw, 2rem) !important; }
+  .content-grid p { font-size: 1rem !important; }
+  .content-grid .card { padding: 1.6rem 1.25rem !important; }
+
+  .event-register-card h3 { font-size: clamp(1.35rem, 6vw, 1.6rem) !important; }
+
+  .home-about,
+  .home-programs,
+  .home-coaches,
+  .home-gallery,
+  .achievements,
+  .cta-section {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  .testimonial-slider { padding: 1.75rem 1.25rem 1.25rem; }
+
+  .logo-bg-center { width: 220px; height: 220px; }
+
+  .sponsor-placeholder { max-width: 100%; }
+}
+
+/* ========== NAVBAR REDESIGN ========== */
+
+.nav-logo-link {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-bounce);
+}
+
+.nav-logo-link:hover { transform: scale(1.05) rotate(6deg); }
+
+/* Search icon + panel */
+.nav-search-wrapper { position: relative; }
+
+.nav-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+}
+
+.nav-search-btn:hover,
+.nav-search-btn.open {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--glow-gold);
+  transform: translateY(-2px);
+}
+
+.search-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  width: 300px;
+  max-width: calc(100vw - 3rem);
+  background: var(--surface);
+  border: 1px solid var(--glass-gold-border);
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 1002;
+  animation: fadeIn 0.25s var(--ease-out);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+.search-results { margin-top: 0.5rem; max-height: 320px; overflow-y: auto; }
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.25s var(--ease-out);
+}
+
+.search-result-item:hover { background: var(--surface-accent); color: var(--accent); }
+.search-result-icon { font-size: 1rem; line-height: 1; }
+
+.search-empty {
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 0.75rem;
+}
+
+/* Compact restyled "Join Now" button */
+.nav-join-btn {
+  gap: 0.4rem;
+  padding: 0.48rem 1.15rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--accent);
+  background: rgba(212, 175, 55, 0.08);
+  font-size: 0.72rem;
+  letter-spacing: 0.8px;
+  box-shadow: none;
+  animation: none;
+}
+
+.nav-join-btn:hover {
+  transform: translateY(-2px);
+  color: var(--bg);
+  box-shadow: var(--glow-gold), 0 6px 16px rgba(212, 175, 55, 0.35);
+}
+
+.nav-join-icon { font-size: 0.85rem; }
+
+@media (max-width: 968px) {
+  .nav-logo { height: 38px; width: 38px; }
+  .nav-search-btn { width: 40px; height: 40px; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0.7rem 1rem; }
+
+  .nav-logo { height: 34px; width: 34px; }
+  .nav-search-btn { width: 38px; height: 38px; font-size: 0.95rem; }
+
+  .nav-join-btn { padding: 0.42rem 0.9rem; gap: 0.35rem; }
+  .nav-join-icon { font-size: 0.78rem; }
+
+  .search-panel { width: min(300px, calc(100vw - 2rem)); }
+}
+
+@media (max-width: 360px) {
+  .nav-logo { height: 30px; width: 30px; }
+  .nav-search-btn { width: 36px; height: 36px; }
 }

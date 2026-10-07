@@ -42,7 +42,7 @@ export default function Sponsors() {
                 <div className="container">
                     <div className="content-grid" style={{ alignItems: "center" }}>
                         <div>
-                            <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>
+                            <h2 style={{ marginBottom: "1.5rem" }}>
                                 Why Sponsor <span className="accent">CFC?</span>
                             </h2>
                             <p style={{ color: "var(--text-muted)", fontSize: "1.1rem", marginBottom: "1.5rem" }}>
