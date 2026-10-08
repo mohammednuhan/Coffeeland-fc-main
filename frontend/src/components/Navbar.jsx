@@ -21,6 +21,7 @@ export default function Navbar() {
     { href: "/contact", label: "Contact", icon: "✉️", desc: "Get in touch with us" },
   ];
 
+  const primaryNavHrefs = ["/", "/about"];
   const dropdownLinks = navLinks;
   const searchResults =
     query.trim() === ""
@@ -84,6 +85,23 @@ export default function Navbar() {
           </div>
         </Link>
 
+        <ul className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
+          {navLinks.map((item) => (
+            <li
+              key={item.href}
+              className={`nav-item ${primaryNavHrefs.includes(item.href) ? "" : "nav-link-desktop-hidden"}`}
+            >
+              <Link
+                to={item.href}
+                className={pathname === item.href ? "nav-active" : ""}
+                onClick={closeMenu}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
         <div className="nav-actions">
           <div className="nav-search-wrapper" ref={searchRef}>
             <button
@@ -132,6 +150,11 @@ export default function Navbar() {
             )}
           </div>
 
+          <Link to="/contact" className="nav-join-btn" onClick={closeMenu}>
+            <span className="nav-join-icon">⚽</span>
+            <span className="nav-join-text">Join Now</span>
+          </Link>
+
           <div className="nav-dropdown-wrapper" ref={dropdownRef}>
             <button
               className={`nav-menu-trigger ${isMenuOpen ? "open" : ""}`}
@@ -167,11 +190,6 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-
-          <Link to="/contact" className="nav-join-btn" onClick={closeMenu}>
-            <span className="nav-join-icon">⚽</span>
-            <span className="nav-join-text">Join Now</span>
-          </Link>
         </div>
 
         <button
@@ -187,20 +205,6 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="nav-backdrop" onClick={closeMenu} aria-hidden="true"></div>
         )}
-
-        <ul className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
-          {navLinks.map((item) => (
-            <li key={item.href} className="nav-item">
-              <Link
-                to={item.href}
-                className={pathname === item.href ? "nav-active" : ""}
-                onClick={closeMenu}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </nav>
     </header>
   );
