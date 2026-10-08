@@ -320,6 +320,15 @@ nav {
 .nav-links a:hover::after,
 .nav-links a.nav-active::after { width: 100%; }
 
+@media (min-width: 969px) {
+  .nav-links {
+    display: flex;
+    margin-left: 2.5rem;
+  }
+
+  .nav-links li.nav-link-desktop-hidden { display: none; }
+}
+
 /* ========== NAV DROPDOWN ========== */
 .nav-item { position: relative; }
 
