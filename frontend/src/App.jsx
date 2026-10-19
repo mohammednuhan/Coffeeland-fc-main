@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Academy from "./pages/Academy";
 import Events from "./pages/Events";
-import News from "./pages/News";
 import Sponsors from "./pages/Sponsors";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
