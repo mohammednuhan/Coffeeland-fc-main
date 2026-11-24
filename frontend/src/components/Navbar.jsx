@@ -21,7 +21,6 @@ export default function Navbar() {
     { href: "/contact", label: "Contact", icon: "✉️", desc: "Get in touch with us" },
   ];
 
-  const primaryNavHrefs = ["/", "/about"];
   const dropdownLinks = navLinks;
   const searchResults =
     query.trim() === ""
@@ -87,10 +86,7 @@ export default function Navbar() {
 
         <ul className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
           {navLinks.map((item) => (
-            <li
-              key={item.href}
-              className={`nav-item ${primaryNavHrefs.includes(item.href) ? "" : "nav-link-desktop-hidden"}`}
-            >
+            <li key={item.href} className="nav-item">
               <Link
                 to={item.href}
                 className={pathname === item.href ? "nav-active" : ""}

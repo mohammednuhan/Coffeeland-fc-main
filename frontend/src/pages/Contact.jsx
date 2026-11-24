@@ -37,7 +37,6 @@ export default function Contact() {
 
         const data = {
             name: `${value("firstName")} ${value("lastName")}`.trim(),
-            guardianName: value("guardianName"),
             email: value("email").toLowerCase(),
             phone: value("phone"),
             dob: value("dob"),
@@ -170,12 +169,7 @@ export default function Contact() {
                                 </div>
 
                                 <div className="reg-section">
-                                    <div className="reg-section-title">2 · Parent / Guardian Details</div>
-
-                                    <div className="form-group full">
-                                        <label htmlFor="guardianName">Parent / Guardian Name *</label>
-                                        <input type="text" id="guardianName" name="guardianName" required placeholder="Full name" />
-                                    </div>
+                                    <div className="reg-section-title">2 · Contact Details</div>
 
                                     <div className="form-group">
                                         <div>
